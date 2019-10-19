@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditEnderecosTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditEnderecosLabel_idEndereco}" for="idEndereco" />
+                    <h:inputText id="idEndereco" value="#{enderecosController.selected.idEndereco}" title="#{bundle.EditEnderecosTitle_idEndereco}" required="true" requiredMessage="#{bundle.EditEnderecosRequiredMessage_idEndereco}"/>
+                    <h:outputLabel value="#{bundle.EditEnderecosLabel_cepEndereco}" for="cepEndereco" />
+                    <h:inputText id="cepEndereco" value="#{enderecosController.selected.cepEndereco}" title="#{bundle.EditEnderecosTitle_cepEndereco}" />
+                    <h:outputLabel value="#{bundle.EditEnderecosLabel_bairroEndereco}" for="bairroEndereco" />
+                    <h:inputText id="bairroEndereco" value="#{enderecosController.selected.bairroEndereco}" title="#{bundle.EditEnderecosTitle_bairroEndereco}" />
+                    <h:outputLabel value="#{bundle.EditEnderecosLabel_logradouroEndereco}" for="logradouroEndereco" />
+                    <h:inputText id="logradouroEndereco" value="#{enderecosController.selected.logradouroEndereco}" title="#{bundle.EditEnderecosTitle_logradouroEndereco}" />
+                    <h:outputLabel value="#{bundle.EditEnderecosLabel_paisEndereco}" for="paisEndereco" />
+                    <h:inputText id="paisEndereco" value="#{enderecosController.selected.paisEndereco}" title="#{bundle.EditEnderecosTitle_paisEndereco}" />
+                    <h:outputLabel value="#{bundle.EditEnderecosLabel_cidadeEndereco}" for="cidadeEndereco" />
+                    <h:inputText id="cidadeEndereco" value="#{enderecosController.selected.cidadeEndereco}" title="#{bundle.EditEnderecosTitle_cidadeEndereco}" />
+                    <h:outputLabel value="#{bundle.EditEnderecosLabel_tipoLogradouroEndereco}" for="tipoLogradouroEndereco" />
+                    <h:inputText id="tipoLogradouroEndereco" value="#{enderecosController.selected.tipoLogradouroEndereco}" title="#{bundle.EditEnderecosTitle_tipoLogradouroEndereco}" />
+                    <h:outputLabel value="#{bundle.EditEnderecosLabel_ufEndereco}" for="ufEndereco" />
+                    <h:inputText id="ufEndereco" value="#{enderecosController.selected.ufEndereco}" title="#{bundle.EditEnderecosTitle_ufEndereco}" />
+                </h:panelGrid>
+                <h:commandLink action="#{enderecosController.update}" value="#{bundle.EditEnderecosSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditEnderecosViewLink}"/>
+                <br />
+                <h:commandLink action="#{enderecosController.prepareList}" value="#{bundle.EditEnderecosShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditEnderecosIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

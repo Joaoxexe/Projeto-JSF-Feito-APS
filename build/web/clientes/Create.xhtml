@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateClientesTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateClientesLabel_idCliente}" for="idCliente" />
+                    <h:inputText id="idCliente" value="#{clientesController.selected.idCliente}" title="#{bundle.CreateClientesTitle_idCliente}" required="true" requiredMessage="#{bundle.CreateClientesRequiredMessage_idCliente}"/>
+                    <h:outputLabel value="#{bundle.CreateClientesLabel_nmCliente}" for="nmCliente" />
+                    <h:inputText id="nmCliente" value="#{clientesController.selected.nmCliente}" title="#{bundle.CreateClientesTitle_nmCliente}" />
+                    <h:outputLabel value="#{bundle.CreateClientesLabel_cpfCliente}" for="cpfCliente" />
+                    <h:inputText id="cpfCliente" value="#{clientesController.selected.cpfCliente}" title="#{bundle.CreateClientesTitle_cpfCliente}" />
+                    <h:outputLabel value="#{bundle.CreateClientesLabel_telefoneCliente}" for="telefoneCliente" />
+                    <h:inputText id="telefoneCliente" value="#{clientesController.selected.telefoneCliente}" title="#{bundle.CreateClientesTitle_telefoneCliente}" />
+                    <h:outputLabel value="#{bundle.CreateClientesLabel_numeroEnderecoCliente}" for="numeroEnderecoCliente" />
+                    <h:inputText id="numeroEnderecoCliente" value="#{clientesController.selected.numeroEnderecoCliente}" title="#{bundle.CreateClientesTitle_numeroEnderecoCliente}" />
+                    <h:outputLabel value="#{bundle.CreateClientesLabel_sexoCliente}" for="sexoCliente" />
+                    <h:inputText id="sexoCliente" value="#{clientesController.selected.sexoCliente}" title="#{bundle.CreateClientesTitle_sexoCliente}" />
+                    <h:outputLabel value="#{bundle.CreateClientesLabel_dtNascimentoCliente}" for="dtNascimentoCliente" />
+                    <h:inputText id="dtNascimentoCliente" value="#{clientesController.selected.dtNascimentoCliente}" title="#{bundle.CreateClientesTitle_dtNascimentoCliente}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.CreateClientesLabel_fgAtivoCliente}" for="fgAtivoCliente" />
+                    <h:inputText id="fgAtivoCliente" value="#{clientesController.selected.fgAtivoCliente}" title="#{bundle.CreateClientesTitle_fgAtivoCliente}" />
+                    <h:outputLabel value="#{bundle.CreateClientesLabel_idEndereco}" for="idEndereco" />
+                    <h:selectOneMenu id="idEndereco" value="#{clientesController.selected.idEndereco}" title="#{bundle.CreateClientesTitle_idEndereco}" >
+                        <f:selectItems value="#{enderecosController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{clientesController.create}" value="#{bundle.CreateClientesSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{clientesController.prepareList}" value="#{bundle.CreateClientesShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateClientesIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditEntradasTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditEntradasLabel_idEntrada}" for="idEntrada" />
+                    <h:inputText id="idEntrada" value="#{entradasController.selected.idEntrada}" title="#{bundle.EditEntradasTitle_idEntrada}" required="true" requiredMessage="#{bundle.EditEntradasRequiredMessage_idEntrada}"/>
+                    <h:outputLabel value="#{bundle.EditEntradasLabel_dtEntrada}" for="dtEntrada" />
+                    <h:inputText id="dtEntrada" value="#{entradasController.selected.dtEntrada}" title="#{bundle.EditEntradasTitle_dtEntrada}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.EditEntradasLabel_qtdEntrada}" for="qtdEntrada" />
+                    <h:inputText id="qtdEntrada" value="#{entradasController.selected.qtdEntrada}" title="#{bundle.EditEntradasTitle_qtdEntrada}" />
+                    <h:outputLabel value="#{bundle.EditEntradasLabel_valorUnitario}" for="valorUnitario" />
+                    <h:inputText id="valorUnitario" value="#{entradasController.selected.valorUnitario}" title="#{bundle.EditEntradasTitle_valorUnitario}" />
+                    <h:outputLabel value="#{bundle.EditEntradasLabel_idFornecedor}" for="idFornecedor" />
+                    <h:selectOneMenu id="idFornecedor" value="#{entradasController.selected.idFornecedor}" title="#{bundle.EditEntradasTitle_idFornecedor}" >
+                        <f:selectItems value="#{fornecedoresController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandLink action="#{entradasController.update}" value="#{bundle.EditEntradasSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditEntradasViewLink}"/>
+                <br />
+                <h:commandLink action="#{entradasController.prepareList}" value="#{bundle.EditEntradasShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditEntradasIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

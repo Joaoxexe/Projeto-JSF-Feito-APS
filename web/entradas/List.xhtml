@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListEntradasTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListEntradasEmpty}" rendered="#{entradasController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{entradasController.items.rowCount > 0}">
+                    <h:outputText value="#{entradasController.pagination.pageFirstItem + 1}..#{entradasController.pagination.pageLastItem + 1}/#{entradasController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{entradasController.previous}" value="#{bundle.Previous} #{entradasController.pagination.pageSize}" rendered="#{entradasController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{entradasController.next}" value="#{bundle.Next} #{entradasController.pagination.pageSize}" rendered="#{entradasController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{entradasController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEntradasTitle_idEntrada}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idEntrada}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEntradasTitle_dtEntrada}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.dtEntrada}">
+                                <f:convertDateTime pattern="MM/dd/yyyy" />
+                            </h:outputText>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEntradasTitle_qtdEntrada}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.qtdEntrada}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEntradasTitle_valorUnitario}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.valorUnitario}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEntradasTitle_idFornecedor}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idFornecedor}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{entradasController.prepareView}" value="#{bundle.ListEntradasViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{entradasController.prepareEdit}" value="#{bundle.ListEntradasEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{entradasController.destroy}" value="#{bundle.ListEntradasDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{entradasController.prepareCreate}" value="#{bundle.ListEntradasCreateLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ListEntradasIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

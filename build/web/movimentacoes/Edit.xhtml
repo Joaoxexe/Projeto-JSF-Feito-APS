@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditMovimentacoesTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditMovimentacoesLabel_idMovimentacao}" for="idMovimentacao" />
+                    <h:inputText id="idMovimentacao" value="#{movimentacoesController.selected.idMovimentacao}" title="#{bundle.EditMovimentacoesTitle_idMovimentacao}" required="true" requiredMessage="#{bundle.EditMovimentacoesRequiredMessage_idMovimentacao}"/>
+                    <h:outputLabel value="#{bundle.EditMovimentacoesLabel_idEntrada}" for="idEntrada" />
+                    <h:selectOneMenu id="idEntrada" value="#{movimentacoesController.selected.idEntrada}" title="#{bundle.EditMovimentacoesTitle_idEntrada}" >
+                        <f:selectItems value="#{entradasController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditMovimentacoesLabel_idProduto}" for="idProduto" />
+                    <h:selectOneMenu id="idProduto" value="#{movimentacoesController.selected.idProduto}" title="#{bundle.EditMovimentacoesTitle_idProduto}" >
+                        <f:selectItems value="#{produtosController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditMovimentacoesLabel_idSaida}" for="idSaida" />
+                    <h:selectOneMenu id="idSaida" value="#{movimentacoesController.selected.idSaida}" title="#{bundle.EditMovimentacoesTitle_idSaida}" >
+                        <f:selectItems value="#{saidasController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandLink action="#{movimentacoesController.update}" value="#{bundle.EditMovimentacoesSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditMovimentacoesViewLink}"/>
+                <br />
+                <h:commandLink action="#{movimentacoesController.prepareList}" value="#{bundle.EditMovimentacoesShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditMovimentacoesIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

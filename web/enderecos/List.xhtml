@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListEnderecosTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListEnderecosEmpty}" rendered="#{enderecosController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{enderecosController.items.rowCount > 0}">
+                    <h:outputText value="#{enderecosController.pagination.pageFirstItem + 1}..#{enderecosController.pagination.pageLastItem + 1}/#{enderecosController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{enderecosController.previous}" value="#{bundle.Previous} #{enderecosController.pagination.pageSize}" rendered="#{enderecosController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{enderecosController.next}" value="#{bundle.Next} #{enderecosController.pagination.pageSize}" rendered="#{enderecosController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{enderecosController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEnderecosTitle_idEndereco}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idEndereco}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEnderecosTitle_cepEndereco}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.cepEndereco}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEnderecosTitle_bairroEndereco}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.bairroEndereco}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEnderecosTitle_logradouroEndereco}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.logradouroEndereco}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEnderecosTitle_paisEndereco}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.paisEndereco}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEnderecosTitle_cidadeEndereco}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.cidadeEndereco}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEnderecosTitle_tipoLogradouroEndereco}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.tipoLogradouroEndereco}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEnderecosTitle_ufEndereco}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.ufEndereco}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{enderecosController.prepareView}" value="#{bundle.ListEnderecosViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{enderecosController.prepareEdit}" value="#{bundle.ListEnderecosEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{enderecosController.destroy}" value="#{bundle.ListEnderecosDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{enderecosController.prepareCreate}" value="#{bundle.ListEnderecosCreateLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ListEnderecosIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

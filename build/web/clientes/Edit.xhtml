@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditClientesTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditClientesLabel_idCliente}" for="idCliente" />
+                    <h:inputText id="idCliente" value="#{clientesController.selected.idCliente}" title="#{bundle.EditClientesTitle_idCliente}" required="true" requiredMessage="#{bundle.EditClientesRequiredMessage_idCliente}"/>
+                    <h:outputLabel value="#{bundle.EditClientesLabel_nmCliente}" for="nmCliente" />
+                    <h:inputText id="nmCliente" value="#{clientesController.selected.nmCliente}" title="#{bundle.EditClientesTitle_nmCliente}" />
+                    <h:outputLabel value="#{bundle.EditClientesLabel_cpfCliente}" for="cpfCliente" />
+                    <h:inputText id="cpfCliente" value="#{clientesController.selected.cpfCliente}" title="#{bundle.EditClientesTitle_cpfCliente}" />
+                    <h:outputLabel value="#{bundle.EditClientesLabel_telefoneCliente}" for="telefoneCliente" />
+                    <h:inputText id="telefoneCliente" value="#{clientesController.selected.telefoneCliente}" title="#{bundle.EditClientesTitle_telefoneCliente}" />
+                    <h:outputLabel value="#{bundle.EditClientesLabel_numeroEnderecoCliente}" for="numeroEnderecoCliente" />
+                    <h:inputText id="numeroEnderecoCliente" value="#{clientesController.selected.numeroEnderecoCliente}" title="#{bundle.EditClientesTitle_numeroEnderecoCliente}" />
+                    <h:outputLabel value="#{bundle.EditClientesLabel_sexoCliente}" for="sexoCliente" />
+                    <h:inputText id="sexoCliente" value="#{clientesController.selected.sexoCliente}" title="#{bundle.EditClientesTitle_sexoCliente}" />
+                    <h:outputLabel value="#{bundle.EditClientesLabel_dtNascimentoCliente}" for="dtNascimentoCliente" />
+                    <h:inputText id="dtNascimentoCliente" value="#{clientesController.selected.dtNascimentoCliente}" title="#{bundle.EditClientesTitle_dtNascimentoCliente}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.EditClientesLabel_fgAtivoCliente}" for="fgAtivoCliente" />
+                    <h:inputText id="fgAtivoCliente" value="#{clientesController.selected.fgAtivoCliente}" title="#{bundle.EditClientesTitle_fgAtivoCliente}" />
+                    <h:outputLabel value="#{bundle.EditClientesLabel_idEndereco}" for="idEndereco" />
+                    <h:selectOneMenu id="idEndereco" value="#{clientesController.selected.idEndereco}" title="#{bundle.EditClientesTitle_idEndereco}" >
+                        <f:selectItems value="#{enderecosController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandLink action="#{clientesController.update}" value="#{bundle.EditClientesSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditClientesViewLink}"/>
+                <br />
+                <h:commandLink action="#{clientesController.prepareList}" value="#{bundle.EditClientesShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditClientesIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

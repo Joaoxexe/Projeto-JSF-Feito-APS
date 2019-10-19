@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewFuncionariosTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewFuncionariosLabel_idFuncionario}"/>
+                    <h:outputText value="#{funcionariosController.selected.idFuncionario}" title="#{bundle.ViewFuncionariosTitle_idFuncionario}"/>
+                    <h:outputText value="#{bundle.ViewFuncionariosLabel_nmFuncionario}"/>
+                    <h:outputText value="#{funcionariosController.selected.nmFuncionario}" title="#{bundle.ViewFuncionariosTitle_nmFuncionario}"/>
+                    <h:outputText value="#{bundle.ViewFuncionariosLabel_cpfFuncionario}"/>
+                    <h:outputText value="#{funcionariosController.selected.cpfFuncionario}" title="#{bundle.ViewFuncionariosTitle_cpfFuncionario}"/>
+                    <h:outputText value="#{bundle.ViewFuncionariosLabel_dtNascimentoFuncionario}"/>
+                    <h:outputText value="#{funcionariosController.selected.dtNascimentoFuncionario}" title="#{bundle.ViewFuncionariosTitle_dtNascimentoFuncionario}">
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewFuncionariosLabel_loginFuncionario}"/>
+                    <h:outputText value="#{funcionariosController.selected.loginFuncionario}" title="#{bundle.ViewFuncionariosTitle_loginFuncionario}"/>
+                    <h:outputText value="#{bundle.ViewFuncionariosLabel_senhaFuncionario}"/>
+                    <h:outputText value="#{funcionariosController.selected.senhaFuncionario}" title="#{bundle.ViewFuncionariosTitle_senhaFuncionario}"/>
+                    <h:outputText value="#{bundle.ViewFuncionariosLabel_telefoneFuncionario}"/>
+                    <h:outputText value="#{funcionariosController.selected.telefoneFuncionario}" title="#{bundle.ViewFuncionariosTitle_telefoneFuncionario}"/>
+                    <h:outputText value="#{bundle.ViewFuncionariosLabel_emailFuncionario}"/>
+                    <h:outputText value="#{funcionariosController.selected.emailFuncionario}" title="#{bundle.ViewFuncionariosTitle_emailFuncionario}"/>
+                    <h:outputText value="#{bundle.ViewFuncionariosLabel_numeroEnderecoFuncionario}"/>
+                    <h:outputText value="#{funcionariosController.selected.numeroEnderecoFuncionario}" title="#{bundle.ViewFuncionariosTitle_numeroEnderecoFuncionario}"/>
+                    <h:outputText value="#{bundle.ViewFuncionariosLabel_sexoFuncionario}"/>
+                    <h:outputText value="#{funcionariosController.selected.sexoFuncionario}" title="#{bundle.ViewFuncionariosTitle_sexoFuncionario}"/>
+                    <h:outputText value="#{bundle.ViewFuncionariosLabel_fgAtivoFuncionario}"/>
+                    <h:outputText value="#{funcionariosController.selected.fgAtivoFuncionario}" title="#{bundle.ViewFuncionariosTitle_fgAtivoFuncionario}"/>
+                    <h:outputText value="#{bundle.ViewFuncionariosLabel_idEndereco}"/>
+                    <h:outputText value="#{funcionariosController.selected.idEndereco}" title="#{bundle.ViewFuncionariosTitle_idEndereco}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{funcionariosController.destroyAndView}" value="#{bundle.ViewFuncionariosDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewFuncionariosEditLink}"/>
+                <br />
+                <h:commandLink action="#{funcionariosController.prepareCreate}" value="#{bundle.ViewFuncionariosCreateLink}" />
+                <br />
+                <h:commandLink action="#{funcionariosController.prepareList}" value="#{bundle.ViewFuncionariosShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewFuncionariosIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

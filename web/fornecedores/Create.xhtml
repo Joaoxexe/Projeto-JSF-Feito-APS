@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateFornecedoresTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateFornecedoresLabel_idFornecedor}" for="idFornecedor" />
+                    <h:inputText id="idFornecedor" value="#{fornecedoresController.selected.idFornecedor}" title="#{bundle.CreateFornecedoresTitle_idFornecedor}" required="true" requiredMessage="#{bundle.CreateFornecedoresRequiredMessage_idFornecedor}"/>
+                    <h:outputLabel value="#{bundle.CreateFornecedoresLabel_nmFornecedor}" for="nmFornecedor" />
+                    <h:inputText id="nmFornecedor" value="#{fornecedoresController.selected.nmFornecedor}" title="#{bundle.CreateFornecedoresTitle_nmFornecedor}" />
+                    <h:outputLabel value="#{bundle.CreateFornecedoresLabel_nmFantasiaFornecedor}" for="nmFantasiaFornecedor" />
+                    <h:inputText id="nmFantasiaFornecedor" value="#{fornecedoresController.selected.nmFantasiaFornecedor}" title="#{bundle.CreateFornecedoresTitle_nmFantasiaFornecedor}" />
+                    <h:outputLabel value="#{bundle.CreateFornecedoresLabel_telefoneFornecedor}" for="telefoneFornecedor" />
+                    <h:inputText id="telefoneFornecedor" value="#{fornecedoresController.selected.telefoneFornecedor}" title="#{bundle.CreateFornecedoresTitle_telefoneFornecedor}" />
+                    <h:outputLabel value="#{bundle.CreateFornecedoresLabel_cnpjFornecedor}" for="cnpjFornecedor" />
+                    <h:inputText id="cnpjFornecedor" value="#{fornecedoresController.selected.cnpjFornecedor}" title="#{bundle.CreateFornecedoresTitle_cnpjFornecedor}" />
+                    <h:outputLabel value="#{bundle.CreateFornecedoresLabel_emailFornecedor}" for="emailFornecedor" />
+                    <h:inputText id="emailFornecedor" value="#{fornecedoresController.selected.emailFornecedor}" title="#{bundle.CreateFornecedoresTitle_emailFornecedor}" />
+                    <h:outputLabel value="#{bundle.CreateFornecedoresLabel_numeroEnderecoFornecedor}" for="numeroEnderecoFornecedor" />
+                    <h:inputText id="numeroEnderecoFornecedor" value="#{fornecedoresController.selected.numeroEnderecoFornecedor}" title="#{bundle.CreateFornecedoresTitle_numeroEnderecoFornecedor}" />
+                    <h:outputLabel value="#{bundle.CreateFornecedoresLabel_fgAtivoFornecedore}" for="fgAtivoFornecedore" />
+                    <h:inputText id="fgAtivoFornecedore" value="#{fornecedoresController.selected.fgAtivoFornecedore}" title="#{bundle.CreateFornecedoresTitle_fgAtivoFornecedore}" />
+                    <h:outputLabel value="#{bundle.CreateFornecedoresLabel_idEndereco}" for="idEndereco" />
+                    <h:selectOneMenu id="idEndereco" value="#{fornecedoresController.selected.idEndereco}" title="#{bundle.CreateFornecedoresTitle_idEndereco}" >
+                        <f:selectItems value="#{enderecosController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{fornecedoresController.create}" value="#{bundle.CreateFornecedoresSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{fornecedoresController.prepareList}" value="#{bundle.CreateFornecedoresShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateFornecedoresIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

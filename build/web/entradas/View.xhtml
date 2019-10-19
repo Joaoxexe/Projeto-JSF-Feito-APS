@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewEntradasTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewEntradasLabel_idEntrada}"/>
+                    <h:outputText value="#{entradasController.selected.idEntrada}" title="#{bundle.ViewEntradasTitle_idEntrada}"/>
+                    <h:outputText value="#{bundle.ViewEntradasLabel_dtEntrada}"/>
+                    <h:outputText value="#{entradasController.selected.dtEntrada}" title="#{bundle.ViewEntradasTitle_dtEntrada}">
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewEntradasLabel_qtdEntrada}"/>
+                    <h:outputText value="#{entradasController.selected.qtdEntrada}" title="#{bundle.ViewEntradasTitle_qtdEntrada}"/>
+                    <h:outputText value="#{bundle.ViewEntradasLabel_valorUnitario}"/>
+                    <h:outputText value="#{entradasController.selected.valorUnitario}" title="#{bundle.ViewEntradasTitle_valorUnitario}"/>
+                    <h:outputText value="#{bundle.ViewEntradasLabel_idFornecedor}"/>
+                    <h:outputText value="#{entradasController.selected.idFornecedor}" title="#{bundle.ViewEntradasTitle_idFornecedor}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{entradasController.destroyAndView}" value="#{bundle.ViewEntradasDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewEntradasEditLink}"/>
+                <br />
+                <h:commandLink action="#{entradasController.prepareCreate}" value="#{bundle.ViewEntradasCreateLink}" />
+                <br />
+                <h:commandLink action="#{entradasController.prepareList}" value="#{bundle.ViewEntradasShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewEntradasIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

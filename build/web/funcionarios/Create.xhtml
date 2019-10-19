@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateFuncionariosTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateFuncionariosLabel_idFuncionario}" for="idFuncionario" />
+                    <h:inputText id="idFuncionario" value="#{funcionariosController.selected.idFuncionario}" title="#{bundle.CreateFuncionariosTitle_idFuncionario}" required="true" requiredMessage="#{bundle.CreateFuncionariosRequiredMessage_idFuncionario}"/>
+                    <h:outputLabel value="#{bundle.CreateFuncionariosLabel_nmFuncionario}" for="nmFuncionario" />
+                    <h:inputText id="nmFuncionario" value="#{funcionariosController.selected.nmFuncionario}" title="#{bundle.CreateFuncionariosTitle_nmFuncionario}" />
+                    <h:outputLabel value="#{bundle.CreateFuncionariosLabel_cpfFuncionario}" for="cpfFuncionario" />
+                    <h:inputText id="cpfFuncionario" value="#{funcionariosController.selected.cpfFuncionario}" title="#{bundle.CreateFuncionariosTitle_cpfFuncionario}" />
+                    <h:outputLabel value="#{bundle.CreateFuncionariosLabel_dtNascimentoFuncionario}" for="dtNascimentoFuncionario" />
+                    <h:inputText id="dtNascimentoFuncionario" value="#{funcionariosController.selected.dtNascimentoFuncionario}" title="#{bundle.CreateFuncionariosTitle_dtNascimentoFuncionario}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.CreateFuncionariosLabel_loginFuncionario}" for="loginFuncionario" />
+                    <h:inputText id="loginFuncionario" value="#{funcionariosController.selected.loginFuncionario}" title="#{bundle.CreateFuncionariosTitle_loginFuncionario}" />
+                    <h:outputLabel value="#{bundle.CreateFuncionariosLabel_senhaFuncionario}" for="senhaFuncionario" />
+                    <h:inputText id="senhaFuncionario" value="#{funcionariosController.selected.senhaFuncionario}" title="#{bundle.CreateFuncionariosTitle_senhaFuncionario}" />
+                    <h:outputLabel value="#{bundle.CreateFuncionariosLabel_telefoneFuncionario}" for="telefoneFuncionario" />
+                    <h:inputText id="telefoneFuncionario" value="#{funcionariosController.selected.telefoneFuncionario}" title="#{bundle.CreateFuncionariosTitle_telefoneFuncionario}" />
+                    <h:outputLabel value="#{bundle.CreateFuncionariosLabel_emailFuncionario}" for="emailFuncionario" />
+                    <h:inputText id="emailFuncionario" value="#{funcionariosController.selected.emailFuncionario}" title="#{bundle.CreateFuncionariosTitle_emailFuncionario}" />
+                    <h:outputLabel value="#{bundle.CreateFuncionariosLabel_numeroEnderecoFuncionario}" for="numeroEnderecoFuncionario" />
+                    <h:inputText id="numeroEnderecoFuncionario" value="#{funcionariosController.selected.numeroEnderecoFuncionario}" title="#{bundle.CreateFuncionariosTitle_numeroEnderecoFuncionario}" />
+                    <h:outputLabel value="#{bundle.CreateFuncionariosLabel_sexoFuncionario}" for="sexoFuncionario" />
+                    <h:inputText id="sexoFuncionario" value="#{funcionariosController.selected.sexoFuncionario}" title="#{bundle.CreateFuncionariosTitle_sexoFuncionario}" />
+                    <h:outputLabel value="#{bundle.CreateFuncionariosLabel_fgAtivoFuncionario}" for="fgAtivoFuncionario" />
+                    <h:inputText id="fgAtivoFuncionario" value="#{funcionariosController.selected.fgAtivoFuncionario}" title="#{bundle.CreateFuncionariosTitle_fgAtivoFuncionario}" />
+                    <h:outputLabel value="#{bundle.CreateFuncionariosLabel_idEndereco}" for="idEndereco" />
+                    <h:selectOneMenu id="idEndereco" value="#{funcionariosController.selected.idEndereco}" title="#{bundle.CreateFuncionariosTitle_idEndereco}" >
+                        <f:selectItems value="#{enderecosController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{funcionariosController.create}" value="#{bundle.CreateFuncionariosSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{funcionariosController.prepareList}" value="#{bundle.CreateFuncionariosShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateFuncionariosIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewMovimentacoesTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewMovimentacoesLabel_idMovimentacao}"/>
+                    <h:outputText value="#{movimentacoesController.selected.idMovimentacao}" title="#{bundle.ViewMovimentacoesTitle_idMovimentacao}"/>
+                    <h:outputText value="#{bundle.ViewMovimentacoesLabel_idEntrada}"/>
+                    <h:outputText value="#{movimentacoesController.selected.idEntrada}" title="#{bundle.ViewMovimentacoesTitle_idEntrada}"/>
+                    <h:outputText value="#{bundle.ViewMovimentacoesLabel_idProduto}"/>
+                    <h:outputText value="#{movimentacoesController.selected.idProduto}" title="#{bundle.ViewMovimentacoesTitle_idProduto}"/>
+                    <h:outputText value="#{bundle.ViewMovimentacoesLabel_idSaida}"/>
+                    <h:outputText value="#{movimentacoesController.selected.idSaida}" title="#{bundle.ViewMovimentacoesTitle_idSaida}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{movimentacoesController.destroyAndView}" value="#{bundle.ViewMovimentacoesDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewMovimentacoesEditLink}"/>
+                <br />
+                <h:commandLink action="#{movimentacoesController.prepareCreate}" value="#{bundle.ViewMovimentacoesCreateLink}" />
+                <br />
+                <h:commandLink action="#{movimentacoesController.prepareList}" value="#{bundle.ViewMovimentacoesShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewMovimentacoesIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

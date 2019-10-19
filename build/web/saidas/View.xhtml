@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewSaidasTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewSaidasLabel_idSaida}"/>
+                    <h:outputText value="#{saidasController.selected.idSaida}" title="#{bundle.ViewSaidasTitle_idSaida}"/>
+                    <h:outputText value="#{bundle.ViewSaidasLabel_dtSaida}"/>
+                    <h:outputText value="#{saidasController.selected.dtSaida}" title="#{bundle.ViewSaidasTitle_dtSaida}">
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewSaidasLabel_qtdSaida}"/>
+                    <h:outputText value="#{saidasController.selected.qtdSaida}" title="#{bundle.ViewSaidasTitle_qtdSaida}"/>
+                    <h:outputText value="#{bundle.ViewSaidasLabel_valorUnitario}"/>
+                    <h:outputText value="#{saidasController.selected.valorUnitario}" title="#{bundle.ViewSaidasTitle_valorUnitario}"/>
+                    <h:outputText value="#{bundle.ViewSaidasLabel_idCliente}"/>
+                    <h:outputText value="#{saidasController.selected.idCliente}" title="#{bundle.ViewSaidasTitle_idCliente}"/>
+                    <h:outputText value="#{bundle.ViewSaidasLabel_idFuncionario}"/>
+                    <h:outputText value="#{saidasController.selected.idFuncionario}" title="#{bundle.ViewSaidasTitle_idFuncionario}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{saidasController.destroyAndView}" value="#{bundle.ViewSaidasDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewSaidasEditLink}"/>
+                <br />
+                <h:commandLink action="#{saidasController.prepareCreate}" value="#{bundle.ViewSaidasCreateLink}" />
+                <br />
+                <h:commandLink action="#{saidasController.prepareList}" value="#{bundle.ViewSaidasShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewSaidasIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>
